@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<module>
+    <namespace>GitEnvato</namespace>
+    <version>1.0</version>
+    <author>Nexo Solutions LLC</author>
+    <name>Github To Envato</name>
+    <description>Provide a fast way to deploy release to Envato by using Github release webhook.</description>
+</module>
