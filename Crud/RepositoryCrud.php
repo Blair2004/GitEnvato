@@ -176,40 +176,60 @@ class RepositoryCrud extends CrudService
     {
         return CrudForm::form(
             main: CrudInput::text(
-                label: __( 'Name' ),
+                label: __m( 'Name', 'GitEnvato'),
                 name: 'name',
                 validation: 'required',
-                description: __( 'Provide a name to the resource.' ),
+                value: $entry ? $entry->name : '',
+                description: __m( 'Provide a name to the resource.', 'GitEnvato'),
             ),
             tabs: CrudForm::tabs(
                 CrudForm::tab(
                     identifier: 'general',
-                    label: __( 'General' ),
+                    label: __m( 'General', 'GitEnvato'),
                     fields: CrudForm::fields(
                         CrudInput::switch(
-                            label: __( 'Active' ),
+                            label: __m( 'Active', 'GitEnvato' ),
                             name: 'active',
                             validation: 'required',
+                            value: $entry ? ( $entry->active ? 1: 0 )  : 1,
                             options: Helper::kvToJsOptions([ __m( 'No', 'GitEnvato' ), __m( 'Yes', 'GitEnvato' ) ]),
-                            description: __( 'Provide a name to the resource.' ),
+                            description: __m( 'Provide a name to the resource.', 'GitEnvato' ),
+                        ),
+                        CrudInput::select(
+                            label: __m( 'Marketplace', 'GitEnvato' ),
+                            name: 'marketplace',
+                            validation: 'required',
+                            value: $entry ? $entry->marketplace : 'codecanyon.net',
+                            options: Helper::kvToJsOptions([ 'codecanyon.net' => 'CodeCanyon', 'themeforest.net' => 'ThemeForest' ]),
+                            description: __m( 'The item will be published on which marketplace.', 'GitEnvato' ),
                         ),
                         CrudInput::text(
-                            label: __( 'Branch' ),
+                            label: __m( 'Envato ID', 'GitEnvato' ),
+                            name: 'envato_item_id',
+                            validation: 'required',
+                            value: $entry ? $entry->envato_item_id : '',
+                            description: __m( 'Provide the envato item id.', 'GitEnvato' ),
+                        ),
+                        CrudInput::text(
+                            label: __m( 'Branch', 'GitEnvato' ),
                             name: 'branch',
                             validation: 'required',
-                            description: __( 'Provide a name to the resource.' ),
+                            value: $entry ? $entry->branch : '',
+                            description: __m( 'Set releases from which branch are allowed.', 'GitEnvato' ),
                         ),
                         CrudInput::switch(
-                            label: __( 'Publish_betas' ),
+                            label: __m( 'Publish_betas', 'GitEnvato' ),
                             name: 'publish_betas',
                             validation: 'required',
+                            value: $entry ? ( int ) $entry->publish_betas : 0,
                             options: Helper::kvToJsOptions([ __m( 'No', 'GitEnvato' ), __m( 'Yes', 'GitEnvato' ) ]),
-                            description: __( 'Provide a name to the resource.' ),
+                            description: __m( 'Provide a name to the resource.', 'GitEnvato' ),
                         ),
                         CrudInput::textarea(
-                            label: __( 'Description' ),
+                            label: __m( 'Description', 'GitEnvato' ),
                             name: 'description',
-                            description: __( 'Provide a name to the resource.' ),
+                            value: $entry ? $entry->description : '',
+                            description: __m( 'Provide a name to the resource.', 'GitEnvato' ),
                         ),
                     )
                 )

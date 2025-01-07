@@ -20,8 +20,10 @@ return new class extends Migration
         Schema::createIfMissing( 'gitenvato_repositories', function( Blueprint $table ) {
             $table->bigIncrements( 'id' );
             $table->string( 'name' );
+            $table->enum( 'marketplace', [ 'codecanyon.net', 'themeforest.net' ]);
             $table->boolean( 'active' )->default( true );
             $table->string( 'branch' )->nullable();
+            $table->integer( 'envato_item_id' );
             $table->boolean( 'publish_betas' )->default( false );
             $table->text( 'description' )->nullable();
             $table->integer( 'author' );
